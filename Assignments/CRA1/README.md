@@ -51,7 +51,7 @@ Each script will generate relevant plots and output statistics to the console.
 For each subtask, the following deliverables are included:
 
 - **Source Code**
-- **Plots** (saved to the `Plots/` directory or shown on screen)
+- [Plots](./Plots/)  
 - **This README**
 
 ---
