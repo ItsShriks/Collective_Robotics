@@ -1,5 +1,6 @@
 
-# Collaborative Robotics Sheet 1 – Nakhye Ghanekar
+# Collaborative Robotics Sheet 1 – Ghanekar Nakhye
+DLRV01_Environment_Setup_files
 
 ## Overview
 
@@ -14,52 +15,65 @@ This project addresses Task Sheet 1 of the **Collaborative Robotics** course for
 
 Make sure the following dependencies are installed:
 
-- Python 3.8  
-- `matplotlib`  
-- `networkx`  
-- `numpy`  
+- Python 3.8+
+- `matplotlib`
+- `networkx`
+- `numpy`
 
 You can install the Python packages using pip:
 
-```bash
-pip install matplotlib networkx numpy
+```python
+pip3 install matplotlib networkx numpy
 ```
-
+or
+```python
+pip3 install -r Collective_Robotics/References/requirements.txt
+```
 ---
 
 ## Running the Code
 
 Use the following commands to run each subtask:
 
+## Subtask 1: Scaling of Data Center Response Times
 ```bash
-# Subtask 1: Scaling of Data Center Response Times
 python subtask1_response_scaling.py
-
-# Subtask 2: Swarm Synchronization
+```
+## Subtask 2: Swarm Synchronization
+```bash
 python subtask2_sync_swarm.py
-
-# Subtask 3: Influence of Swarm Connectivity
+```
+## Subtask 3: Influence of Swarm Connectivity
+```bash
 python subtask3_connectivity.py
 ```
 
-Each script will generate relevant plots and output statistics to the console.
-
+Each script will generate relevant plots and output statistics to:
+```
+/Collective_Robotics/Assignments/CRA1/Plots
+```
 ---
 
-## Output
+<!-- ## Output
 
 For each subtask, the following deliverables are included:
 
 - **Source Code**
-- [Plots](./Plots/)  
+- [Plots](./Plots/)
 - **This README**
 
----
+--- -->
 
-## Submission
+<!-- ## Submission
 
 - Zip all files into a single file named:
   ```
   collRob_sheet1_GHANEKAR_NAKHYE.zip
   ```
-- Be prepared to **present the solution in person**.
+- Be prepared to **present the solution in person**. -->
+## Tested On
+### macOS
+  - MacBook Air A2337 - macOS Sonoma - 14.1.1 (23B81)/15.4 (24E248)
+  - Memory - 8GB
+  - Xcode - xcode-select version 2403.
+  - Python 3.12.0
