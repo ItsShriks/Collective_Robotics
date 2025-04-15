@@ -25,10 +25,6 @@ You can install the Python packages using pip:
 ```python
 pip3 install matplotlib networkx numpy
 ```
-or
-```python
-pip3 install -r Collective_Robotics/References/requirements.txt
-```
 ---
 
 ## Running the Code
