@@ -1,17 +1,18 @@
 
 # Collaborative Robotics Sheet 1 – Ghanekar Nakhye
-DLRV01_Environment_Setup_files
 
-## Overview
+📌 Overview
 
-This project addresses Task Sheet 1 of the **Collaborative Robotics** course for Summer Semester 2025, under the supervision of **Prof. Dr. Javad Ghofrani**. The  Objectives are:
+This project addresses Task Sheet 1 of the **Collective Robotics** course for Summer Semester 2025 of MAS, under the supervision of **Prof. Dr. Javad Ghofrani.**
 
-- Get acquainted with scaling of response times
-- Investigate a method to synchronize an asynchronous swarm
-- Experience inuence of swarm connectivity/swarm density
+The objectives are:
+1. Get acquainted with scaling of response times
+2. Investigate a method to synchronize an asynchronous swarm
+3. Experience influence of swarm connectivity/swarm density
+
 ---
 
-## Requirements
+## ⚙️ Requirements
 
 Make sure the following dependencies are installed:
 
@@ -22,31 +23,35 @@ Make sure the following dependencies are installed:
 
 You can install the Python packages using pip:
 
-```python
+```bash
 pip3 install matplotlib networkx numpy
+```
+Or Create a new conda environment using the provided environment.yml file:
+```bash
+conda env create -f src/environment.yml
 ```
 ---
 
-## Running the Code
+## ▶️ Running the Code
 
 Use the following commands to run each subtask:
 
 ## Subtask 1: Scaling of Data Center Response Times
 ```bash
-python subtask1_response_scaling.py
+python3 /Assignments/CRA1/src/task1.py
 ```
 ## Subtask 2: Swarm Synchronization
 ```bash
-python subtask2_sync_swarm.py
+python3 /Assignments/CRA1/src/task2.py
 ```
 ## Subtask 3: Influence of Swarm Connectivity
 ```bash
-python subtask3_connectivity.py
+python3 /Assignments/CRA1/src/task3.py
 ```
 
 Each script will generate relevant plots and output statistics to:
-```
-/Collective_Robotics/Assignments/CRA1/Plots
+```bash
+/Collective_Robotics/Assignments/CRA1/output
 ```
 ---
 
@@ -67,9 +72,26 @@ For each subtask, the following deliverables are included:
   collRob_sheet1_GHANEKAR_NAKHYE.zip
   ```
 - Be prepared to **present the solution in person**. -->
-## Tested On
-### macOS
+## 🧪 Tested On
+### macOS 
   - MacBook Air A2337 - macOS Sonoma - 14.1.1 (23B81)/15.4 (24E248)
   - Memory - 8GB
   - Xcode - xcode-select version 2403.
   - Python 3.12.0
+
+### Linux 🐧
+  - ASUS Vivobook - Ubuntu 22.04.3 LTS
+  - Memory - 16GB
+  - CPU - Intel Core i7-1165G7 @ 2.80GHz
+  - GPU - NVIDIA GeForce 1080Ti
+  - Python 3.12.0
+
+## 👥 Contributors:
+- [Trushar Ghanekar](https://github.com/Trushar2411)
+- [Shrikar Nakhye](https://github.com/ItsShriks)
+## Acknowledgements:
+- [Prof. Dr. Javad Ghofrani](https://www.h-brs.de/de/inf/prof-dr-javad-ghofrani)
+
+- [Youssef Mahmoud Youssef](https://www.h-brs.de/de/inf/youssef-mahmoud-youssef)
+
+- [Hochschule Bonn-Rhein-Sieg](https://www.h-brs.de/de)
