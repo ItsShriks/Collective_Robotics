@@ -44,10 +44,10 @@ python3 /Assignments/CRA1/src/task1.py
 ```bash
 python3 /Assignments/CRA1/src/task2.py
 ```
-## Subtask 3: Influence of Swarm Connectivity
+<!-- ## Subtask 3: Influence of Swarm Connectivity
 ```bash
 python3 /Assignments/CRA1/src/task3.py
-```
+``` -->
 
 Each script will generate relevant plots and output statistics to:
 ```bash
