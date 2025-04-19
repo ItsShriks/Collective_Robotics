@@ -1,13 +1,31 @@
+import os
 import numpy as np
 import matplotlib.pyplot as plt
+import time
+import platform
+import psutil
+from scipy.stats import poisson
+from scipy.spatial import KDTree
+
+# -------------------------
+# Start timer
+# -------------------------
+start_time = time.time()
+
+# -------------------------
+# Output path
+# -------------------------
+output_dir = "Assignments/CRA1/output"
+output_path = os.path.join(output_dir, "firefly_synchronization.png")
+os.makedirs(output_dir, exist_ok=True)
 
 # -------------------------
 # Parameters
 # -------------------------
 N = 250
 L = 50
-T = 5000
-r_values = np.arange(0.025, 1.425, 0.025)
+T = 1000
+r_values = np.arange(0.000, 1.5, 0.25)
 num_runs = 50
 
 # -------------------------
@@ -48,7 +66,6 @@ def run_simulation(positions, r):
                     new_clocks[i] = (clocks[i] + 1) % L
         clocks = new_clocks
 
-    # Return only the last cycle's flash count
     return flash_counts[-L:]
 
 # -------------------------
@@ -79,4 +96,17 @@ plt.xlabel("Vicinity Radius r")
 plt.ylabel("Average Amplitude (ΔFlashers / 2)")
 plt.grid(True)
 plt.tight_layout()
+plt.savefig(output_path, dpi=300)
 plt.show()
+
+# -------------------------
+# End timer and print system info
+# -------------------------
+end_time = time.time()
+exec_time = end_time - start_time
+
+print("\n--- Execution Summary ---")
+print(f"Execution Time: {exec_time:.2f} seconds")
+print(f"System Architecture: {platform.machine()}")
+print(f"CPU: {platform.processor() or platform.uname().processor}")
+print(f"Total RAM: {round(psutil.virtual_memory().total / (1024 ** 3), 2)} GB")

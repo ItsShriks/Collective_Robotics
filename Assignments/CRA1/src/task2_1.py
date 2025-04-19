@@ -1,5 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
+
+output_dir = "Assignments/CRA1/output"
+output_path = os.path.join(output_dir, "firefly_synchronization.png")
+os.makedirs(output_dir, exist_ok=True)
 
 # --------------------------
 # Parameters
@@ -80,4 +85,9 @@ plt.ylabel("Number of Flashing Fireflies")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
+
+# --------------------------
+# Save and show plot
+# --------------------------
+plt.savefig(output_dir, dpi=300)
 plt.show()
