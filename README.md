@@ -21,8 +21,8 @@ conda env create -f /References/environment.yml
 ### Linux 🐧
   - ASUS Vivobook - Ubuntu 22.04.3 LTS
   - Memory - 16GB
-  - CPU - Intel Core i7-1165G7 @ 2.80GHz
-  - GPU - NVIDIA GeForce 1080Ti
+  - CPU - Ryzen 7 5800HS @ 3.2GHz
+  - GPU - NVIDIA GeForce RTX 3050
   - Python 3.12.0
 
 ## 👥 Contributors:
