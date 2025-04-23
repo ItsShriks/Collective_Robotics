@@ -1,0 +1,12 @@
+[submodule "Assignments/CRA2/SwarmRobotics"]
+	path = Assignments/CRA2/SwarmRobotics
+	url = https://gitlab.com/InfectedBytes/SwarmRobotics.git
+[submodule "Assignments/CRA2/roborobo3"]
+	path = Assignments/CRA2/roborobo3
+	url = https://github.com/nekonaute/roborobo3.git
+[submodule "Assignments/CRA2/jbotevolver"]
+	path = Assignments/CRA2/jbotevolver
+	url = https://github.com/BioMachinesLab/jbotevolver.git
+[submodule "Assignments/CRA2/argos3"]
+	path = Assignments/CRA2/argos3
+	url = https://github.com/ilpincy/argos3.git
