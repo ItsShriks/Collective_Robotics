@@ -8,4 +8,6 @@ add_library(vacuum_loop_functions MODULE vacuum_loop_functions.h vacuum_loop_fun
 target_link_libraries(vacuum_loop_functions
   argos3core_simulator
   argos3plugin_simulator_footbot
-  argos3plugin_simulator_genericrobot)
+  argos3plugin_simulator_genericrobot
+  argos3plugin_simulator_entities)
+

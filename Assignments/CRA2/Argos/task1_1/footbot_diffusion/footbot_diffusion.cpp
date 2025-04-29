@@ -13,7 +13,7 @@ CFootBotDiffusion::CFootBotDiffusion() :
    m_pcProximity(NULL),
    m_cAlpha(10.0f),
    m_fDelta(0.5f),
-   m_fWheelVelocity(2.5f),
+   m_fWheelVelocity(10.0f),
    m_cGoStraightAngleRange(-ToRadians(m_cAlpha),
                            ToRadians(m_cAlpha)) {}
 
