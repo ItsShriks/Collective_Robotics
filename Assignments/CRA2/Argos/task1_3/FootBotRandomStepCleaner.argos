@@ -12,7 +12,7 @@
   <!-- Controllers -->
   <controllers>
     <footbot_random_step_cleaner_controller id="rsc"
-                                            library="footbot_random_cleaner/build/libfootbot_random_step_cleaner">
+                                            library="footbot_random_step_cleaner/build/libfootbot_random_step_cleaner">
       <actuators>
         <differential_steering implementation="default" />
       </actuators>

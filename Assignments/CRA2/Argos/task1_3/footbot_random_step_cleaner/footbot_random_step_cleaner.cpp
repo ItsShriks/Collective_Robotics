@@ -59,3 +59,6 @@ void CFootBotRandomStepCleaner::ControlStep() {
       m_pcWheels->SetLinearVelocity(m_fWheelVelocity, m_fWheelVelocity);
    }
 }
+extern "C" {
+   REGISTER_CONTROLLER(CFootBotRandomStepCleaner, "footbot_random_step_cleaner_controller")
+}
