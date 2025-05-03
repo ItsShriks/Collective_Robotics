@@ -1,6 +1,3 @@
-Here's the `README.md` content formatted properly in Markdown. You can copy and paste this into a file named `README.md`:
-
-````markdown
 # Behavior-Based Robotics and Collective Behaviors – Simulation Tasks
 
 This project contains a series of robotics tasks implemented using the **ARGoS** simulator, focusing on behavior-based control for both **individual robots** and **robot swarms**.
@@ -30,15 +27,13 @@ mkdir build
 cd build
 cmake ..
 make
-````
+```
 
 Then, to run the ARGoS simulation:
 
 ```bash
 argos3 -c task1_1\task1_1.argos
 ```
-
-
 
 ---
 
@@ -48,13 +43,13 @@ argos3 -c task1_1\task1_1.argos
 
 These tasks use a single robot in a rectangular, wall-bounded environment.
 
-* **Task 1\_1 (2.A)**: Collision Avoidance
+- **Task 1_1 (2.A)**: Collision Avoidance  
   A robot roams around while avoiding obstacles and walls using sensors.
 
-* **Task 1\_2 (2.B)**: Wall-Following
+- **Task 1_2 (2.B)**: Wall-Following  
   Robot follows the wall boundaries without making physical contact.
 
-* **Task 1\_3 (2.C)**: Vacuum Cleaner Strategy
+- **Task 1_3 (2.C)**: Vacuum Cleaner Strategy  
   Designed to cover most of the arena space efficiently, simulating a cleaning robot.
 
 ---
@@ -63,10 +58,10 @@ These tasks use a single robot in a rectangular, wall-bounded environment.
 
 All robots share the same control logic and are randomly distributed at simulation start.
 
-* **Task 2\_1 (3.A)**: Proximity Stop
+- **Task 2_1 (3.A)**: Proximity Stop  
   Robots stop when another robot is too close. This uses simulated inter-robot distance sensing.
 
-* **Task 2\_2 (3.B & 3.C)**: Aggregation Behavior
+- **Task 2_2 (3.B & 3.C)**: Aggregation Behavior  
   Adds a timeout before robots resume movement, encouraging swarm clustering with occasional movement to avoid stagnation.
 
 ---
@@ -79,22 +74,17 @@ All tasks are built using the [ARGoS simulator](http://www.argos-sim.info/). Mak
 
 ## ✅ Status Tracker
 
-| Task Folder | Status |
-| ----------- | ------ |
-| task1\_1    | ✅ Done |
-| task1\_2    | ✅ Done |
-| task1\_3    | ✅ Done |
-| task2\_1    | ✅ Done |
-| task2\_2    | ✅ Done |
+| Task Folder | Status     |
+|-------------|------------|
+| task1_1     | ✅ Done     |
+| task1_2     | ✅ Done     |
+| task1_3     | ✅ Done     |
+| task2_1     | ✅ Done     |
+| task2_2     | incomplete   |
 
 ---
 
 ## 📌 Notes
 
-* Each behavior was implemented with modular and clean design in mind.
-* Parameters such as distance thresholds and waiting time can be tuned in the source code or `.argos` files for better performance or experimentation.
-
-```
-
-Let me know if you'd like me to save this as a downloadable file or generate separate README files for each task folder.
-```
+- Each behavior was implemented with modular and clean design in mind.
+- Parameters such as distance thresholds and waiting time can be tuned in the source code or `.argos` files for better performance or experimentation.
