@@ -61,8 +61,23 @@ void CFootBotWallFollowing::ControlStep() {
 
    /* Wall detected: follow it */
 
-   /* Calculate the distance to the wall */
-   float fDistanceToWall = cAccumulator.Length();
+   /* Use only side-facing sensors (e.g., front-right and right) to compute distance to wall */
+   Real fDistanceToWall = 0.0f;
+   size_t unCount = 0;
+
+   for(const auto& tReading : tProxReads) {
+      if(tReading.Angle.GetValue() > -ARGOS_PI / 2 && tReading.Angle.GetValue() < ARGOS_PI / 2) {
+         fDistanceToWall += tReading.Value;
+         ++unCount;
+      }
+   }
+
+   if(unCount > 0) {
+      fDistanceToWall /= unCount;
+   } else {
+      fDistanceToWall = 0.0f; // fallback
+   }
+
 
    /* Calculate the error (difference from desired distance) */
    float fError = fDistanceToWall - m_fDesiredDistance;

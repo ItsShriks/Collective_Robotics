@@ -24,7 +24,7 @@
   <controllers>
 
     <footbot_diffusion_controller id="fdc"
-                                  library="trajectory_loop_functions/build/libfootbot_diffusion">
+                                  library="build/libfootbot_diffusion">
       <actuators>
         <differential_steering implementation="default" />
       </actuators>
@@ -39,26 +39,26 @@
   <!-- ****************** -->
   <!-- * Loop functions * -->
   <!-- ****************** -->
-  <loop_functions library="trajectory_loop_functions/build/libtrajectory_loop_functions"
+  <loop_functions library="build/libtrajectory_loop_functions"
                   label="trajectory_loop_functions" />
 
   <!-- *********************** -->
   <!-- * Arena configuration * -->
   <!-- *********************** -->
-  <arena size="3, 3, 1" center="0,0,0.5">
+  <arena size="4, 4, 1" center="0,0,0.5">
 
     <!-- Place four boxes in a square to delimit the arena -->
-    <box id="wall_north" size="2,0.1,0.5" movable="false">
-      <body position="0,1,0" orientation="0,0,0" />
+    <box id="wall_north" size="4,0.1,0.5" movable="false">
+      <body position="0,2,0" orientation="0,0,0" />
     </box>
-    <box id="wall_south" size="2,0.1,0.5" movable="false">
-      <body position="0,-1,0" orientation="0,0,0" />
+    <box id="wall_south" size="4,0.1,0.5" movable="false">
+      <body position="0,-2,0" orientation="0,0,0" />
     </box>
-    <box id="wall_east" size="0.1,2,0.5" movable="false">
-      <body position="1,0,0" orientation="0,0,0" />
+    <box id="wall_east" size="0.1,4,0.5" movable="false">
+      <body position="2,0,0" orientation="0,0,0" />
     </box>
-    <box id="wall_west" size="0.1,2,0.5" movable="false">
-      <body position="-1,0,0" orientation="0,0,0" />
+    <box id="wall_west" size="0.1,4,0.5" movable="false">
+      <body position="-2,0,0" orientation="0,0,0" />
     </box>
 
   
@@ -72,25 +72,21 @@
         We distribute 2 boxes uniformly in position and rotation around Z.
     -->
     <distribute>
-      <position method="uniform" min="-1,-1,0" max="1,1,0" />
+      <position method="uniform" min="-1.9,-1.9,0" max="1.9,1.9,0" />
       <orientation method="uniform" min="0,0,0" max="360,0,0" />
-      <entity quantity="2" max_trials="100">
+      <entity quantity="10" max_trials="100">
         <box id="b" size="0.3,0.3,0.5" movable="false" />
       </entity>
     </distribute>
 
-    <!--
-        We distribute cylinders uniformly in position and with
-        constant rotation (rotating a cylinder around Z does not
-        matter)
-    -->
     <distribute>
-      <position method="uniform" min="-1,-1,0" max="1,1,0" />
+      <position method="uniform" min="-1.9,-1.9,0" max="1.9,1.9,0" />
       <orientation method="constant" values="0,0,0" />
-      <entity quantity="2" max_trials="100">
+      <entity quantity="10" max_trials="100">
         <cylinder id="c" height="0.5" radius="0.10" movable="false" />
       </entity>
     </distribute>
+
 
   </arena>
 
@@ -116,11 +112,11 @@
         Check 'argos3 -q qt-opengl' for more help.
     -->
     <qt-opengl>
-      <user_functions library="trajectory_loop_functions/build/libtrajectory_loop_functions"
+      <user_functions library="build/libtrajectory_loop_functions"
                       label="trajectory_qtuser_functions" />
       <camera>
         <placements>
-          <placement index="0" position="-6.83677,-0.0492575,7.1301" look_at="-6.14438,-0.0492575,6.40857" up="0.721522,-3.4075e-17,0.692391" lens_focal_length="65" />
+          <placement index="0" position="0,0,12" look_at="0,0,0" up="1,0,0" lens_focal_length="65" />
         </placements>
       </camera>
     </qt-opengl>

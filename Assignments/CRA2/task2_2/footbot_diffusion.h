@@ -31,12 +31,13 @@ private:
    enum EState {
       STATE_MOVING,
       STATE_WAITING,
-      STATE_BACKING
+      STATE_TURNING,
+      STATE_ESCAPE_FORWARD
    } m_eState;
 
    UInt32 m_unCurrentWait;
 
-   bool IsRobotInFront();
+   bool IsObstacleDetected();
 };
 
 #endif

@@ -12,39 +12,39 @@
   <!-- Controllers -->
   <controllers>
     <footbot_diffusion_controller id="fdc"
-                                  library="footbot_diffusion/build/libfootbot_diffusion">
+                                  library="build/libfootbot_diffusion">
       <actuators>
         <differential_steering implementation="default" />
       </actuators>
       <sensors>
         <footbot_proximity implementation="default" show_rays="true" />
       </sensors>
-      <params alpha="7.5" delta="0.2" velocity="5" wait_steps="30" />
+      <params alpha="7.5" delta="0.1" velocity="20" wait_steps="30" />
     </footbot_diffusion_controller>
   </controllers>
 
   <!-- Arena configuration -->
-  <arena size="6,6,1" center="0,0,0.5">
+  <arena size="4, 4, 1" center="0,0,0.5">
 
-    <!-- Four walls enclosing the arena -->
-    <box id="wall_north" size="6,0.1,0.5" movable="false">
-      <body position="0,3.0,0" orientation="0,0,0" />
+    <!-- Place four boxes in a square to delimit the arena -->
+    <box id="wall_north" size="4,0.1,0.5" movable="false">
+      <body position="0,2,0" orientation="0,0,0" />
     </box>
-    <box id="wall_south" size="6,0.1,0.5" movable="false">
-      <body position="0,-3.0,0" orientation="0,0,0" />
+    <box id="wall_south" size="4,0.1,0.5" movable="false">
+      <body position="0,-2,0" orientation="0,0,0" />
     </box>
-    <box id="wall_east" size="0.1,6,0.5" movable="false">
-      <body position="3.0,0,0" orientation="0,0,0" />
+    <box id="wall_east" size="0.1,4,0.5" movable="false">
+      <body position="2,0,0" orientation="0,0,0" />
     </box>
-    <box id="wall_west" size="0.1,6,0.5" movable="false">
-      <body position="-3.0,0,0" orientation="0,0,0" />
+    <box id="wall_west" size="0.1,4,0.5" movable="false">
+      <body position="-2,0,0" orientation="0,0,0" />
     </box>
 
     <!-- Distribute 10 foot-bots in the arena -->
     <distribute>
-      <position method="uniform" min="-2.5,-2.5,0" max="2.5,2.5,0" />
+      <position method="uniform" min="-1.8,-1.8,0" max="1.8,1.8,0" />
       <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" />
-      <entity quantity="10" max_trials="100">
+      <entity quantity="20" max_trials="100">
         <foot-bot id="fb0">
           <controller config="fdc" />
         </foot-bot>

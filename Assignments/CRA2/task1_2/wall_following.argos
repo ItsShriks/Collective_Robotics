@@ -20,7 +20,7 @@
         Replace "footbot_diffusion_controller" with your wall-following controller
     -->
     <footbot_wall_following_controller id="fwc"
-                                      library="footbot_wall_follower/build/libfootbot_wall_following">
+                                      library="build/libfootbot_wall_following">
       <!-- Actuators for the wall-following robot -->
       <actuators>
         <differential_steering implementation="default" />

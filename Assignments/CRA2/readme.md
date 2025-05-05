@@ -80,7 +80,8 @@ All tasks are built using the [ARGoS simulator](http://www.argos-sim.info/). Mak
 | task1_2     | ✅ Done     |
 | task1_3     | ✅ Done     |
 | task2_1     | ✅ Done     |
-| task2_2     | incomplete   |
+| task2_2     | ✅ Done     |
+| task2_3     | ❌ Incomplete     |
 
 ---
 
