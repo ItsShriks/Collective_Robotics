@@ -1,0 +1,4 @@
+/home/trushar/Collective_Robotics/Assignments/CRA2/task1_3/build/CMakeFiles/trajectory_loop_functions.dir
+/home/trushar/Collective_Robotics/Assignments/CRA2/task1_3/build/CMakeFiles/footbot_diffusion.dir
+/home/trushar/Collective_Robotics/Assignments/CRA2/task1_3/build/CMakeFiles/edit_cache.dir
+/home/trushar/Collective_Robotics/Assignments/CRA2/task1_3/build/CMakeFiles/rebuild_cache.dir
