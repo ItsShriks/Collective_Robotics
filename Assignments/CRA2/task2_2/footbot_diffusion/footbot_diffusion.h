@@ -19,22 +19,23 @@ public:
    virtual void Destroy() {}
 
 private:
-   /* Actuators & Sensors */
    CCI_DifferentialSteeringActuator* m_pcWheels;
    CCI_FootBotProximitySensor* m_pcProximity;
 
-   /* Parameters */
    CDegrees m_cAlpha;
    Real m_fDelta;
    Real m_fWheelVelocity;
    UInt32 m_unWaitSteps;
    CRange<CRadians> m_cGoStraightAngleRange;
 
-   /* State machine */
-   enum EState { STATE_MOVING, STATE_WAITING } m_eState;
+   enum EState {
+      STATE_MOVING,
+      STATE_WAITING,
+      STATE_BACKING
+   } m_eState;
+
    UInt32 m_unCurrentWait;
 
-   /* Helper to detect frontal proximity */
    bool IsRobotInFront();
 };
 
