@@ -25,7 +25,7 @@
       </sensors>
 
       <!-- Parameters for obstacle avoidance behavior -->
-      <params alpha="7.5" delta="0.1" velocity="5" />
+      <params alpha="7.5" delta="0.1" velocity="20" />
     </footbot_diffusion_controller>
   </controllers>
 

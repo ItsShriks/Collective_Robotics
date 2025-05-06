@@ -7,10 +7,10 @@ CFootBotWallFollowing::CFootBotWallFollowing() :
    m_pcProximity(NULL),
    m_cAlpha(5.0f),
    m_fDelta(0.03f),
-   m_fWheelVelocity(5.0f),
+   m_fWheelVelocity(20.0f),
    m_cGoStraightAngleRange(-ToRadians(m_cAlpha),
                            ToRadians(m_cAlpha)),
-   m_fDesiredDistance(0.1f) {  // Desired distance from the wall (e.g., 10 cm)
+   m_fDesiredDistance(0.2f) {  // Desired distance from the wall (e.g., 10 cm)
 }
 
 /****************************************/

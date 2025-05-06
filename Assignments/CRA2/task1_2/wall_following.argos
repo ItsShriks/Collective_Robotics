@@ -31,7 +31,7 @@
       </sensors>
       <!-- Parameters for the wall-following algorithm -->
       <!-- Increased velocity and adjusted alpha and delta for closer and faster wall-following -->
-      <params alpha="5" delta="0.03" velocity="10" />
+      <params alpha="5" delta="0.03" velocity="20" />
     </footbot_wall_following_controller>
 
   </controllers>
