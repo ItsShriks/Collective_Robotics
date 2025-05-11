@@ -90,4 +90,5 @@ def update(frame):
 # Faster Animation
 ani = animation.FuncAnimation(fig, update, frames=300, interval=100, blit=True)
 plt.tight_layout()
+plt.savefig("../output/task2_b.png")
 plt.show()
