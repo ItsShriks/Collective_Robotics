@@ -4,91 +4,95 @@ import matplotlib.animation as animation
 import random
 
 # Parameters
-GRID_SIZE = 30
-NUM_OBJECTS = 100
-NUM_ANTI_AGENTS = 20
+GRID_SIZE = 50
+NUM_AGENTS = 40
+NUM_ANTI_AGENTS = 5
 SENSE_RADIUS = 1
-k_pick = 0.1
-k_drop = 0.3
+CLUSTER_THRESHOLD = 4  # If local robot density exceeds this, agent is in a "cluster"
+TOTAL_STEPS = 200
 
-# Color definitions
-COLORS = {
-    0: (1, 1, 1),        # Empty - white
-    1: (0.2, 0.4, 0.9),  # Object - blue
-    3: (1.0, 0.2, 0.2),  # Anti-agent - red
-    4: (1.0, 0.8, 0.0)   # Anti-agent carrying object - yellow
-}
-
-# Local density calculation
-def local_density(x, y, grid):
-    count = 0
-    for dx in range(-SENSE_RADIUS, SENSE_RADIUS + 1):
-        for dy in range(-SENSE_RADIUS, SENSE_RADIUS + 1):
-            nx, ny = (x + dx) % GRID_SIZE, (y + dy) % GRID_SIZE
-            if grid[nx, ny] == 1:
-                count += 1
-    area = (2 * SENSE_RADIUS + 1) ** 2
-    return count / area
-
-# Initialize grid
+# Initialize grid and agents
 grid = np.zeros((GRID_SIZE, GRID_SIZE), dtype=int)
-object_positions = random.sample([(i, j) for i in range(GRID_SIZE) for j in range(GRID_SIZE)], NUM_OBJECTS)
-for pos in object_positions:
-    grid[pos] = 1
-
-# Anti-Agents only: [x, y, carrying, is_anti=True]
 agents = []
+
+# Create normal agents
+for _ in range(NUM_AGENTS):
+    x, y = np.random.randint(0, GRID_SIZE, 2)
+    agents.append({'x': x, 'y': y, 'is_anti': False, 'ordered_to_leave': False})
+
+# Create anti-agents
 for _ in range(NUM_ANTI_AGENTS):
     x, y = np.random.randint(0, GRID_SIZE, 2)
-    agents.append([x, y, False, True])
+    agents.append({'x': x, 'y': y, 'is_anti': True})
 
-# Fancy color grid
-def get_color_grid(grid, agents):
-    color_grid = np.zeros((GRID_SIZE, GRID_SIZE, 3))
-    color_grid[:, :] = COLORS[0]  # background
-    for i in range(GRID_SIZE):
-        for j in range(GRID_SIZE):
-            if grid[i, j] == 1:
-                color_grid[i, j] = COLORS[1]  # object
-    for agent in agents:
-        x, y, carrying, _ = agent
-        color_grid[x, y] = COLORS[4] if carrying else COLORS[3]
-    return color_grid
+def local_density(x, y, agents):
+    count = 0
+    for other in agents:
+        if other['is_anti']:
+            continue
+        dx = min(abs(x - other['x']), GRID_SIZE - abs(x - other['x']))
+        dy = min(abs(y - other['y']), GRID_SIZE - abs(y - other['y']))
+        if dx <= SENSE_RADIUS and dy <= SENSE_RADIUS:
+            count += 1
+    return count
 
-# Plot setup
-fig, ax = plt.subplots(figsize=(7, 7))
-img = ax.imshow(get_color_grid(grid, agents), origin='lower')
-ax.set_title("Object Clustering with Only Anti-Agents", fontsize=16, fontweight='bold')
+def move_randomly(agent):
+    dx, dy = np.random.choice([-1, 0, 1]), np.random.choice([-1, 0, 1])
+    agent['x'] = (agent['x'] + dx) % GRID_SIZE
+    agent['y'] = (agent['y'] + dy) % GRID_SIZE
+
+# Visualization setup
+fig, ax = plt.subplots(figsize=(6, 6))
+img = ax.imshow(grid, cmap='gray', origin='lower', vmin=0, vmax=2)
+ax.set_title("Swarm Aggregation with Anti-Agents")
 plt.axis('off')
 
-# Update function
 def update(frame):
-    global grid, agents
+    global agents, grid
+
+    grid[:] = 0  # Clear grid
+
+    # Step 1: Anti-agents broadcast "leave" command
     for agent in agents:
-        x, y, carrying, is_anti = agent
-        f = local_density(x, y, grid)
+        if agent['is_anti']:
+            # Sense surrounding area and find agents in dense clusters
+            for other in agents:
+                if not other['is_anti']:
+                    dx = min(abs(agent['x'] - other['x']), GRID_SIZE - abs(agent['x'] - other['x']))
+                    dy = min(abs(agent['y'] - other['y']), GRID_SIZE - abs(agent['y'] - other['y']))
+                    if dx <= SENSE_RADIUS and dy <= SENSE_RADIUS:
+                        density = local_density(other['x'], other['y'], agents)
+                        if density >= CLUSTER_THRESHOLD:
+                            other['ordered_to_leave'] = True
 
-        if carrying:
-            p_drop = k_drop**2 / (k_drop**2 + f**2)
-            if grid[x, y] == 0 and np.random.rand() < p_drop:
-                grid[x, y] = 1
-                agent[2] = False
+    # Step 2: Move agents
+    for agent in agents:
+        if agent['is_anti']:
+            move_randomly(agent)
         else:
-            if grid[x, y] == 1:
-                p_pick = f**2 / (k_pick**2 + f**2)
-                if np.random.rand() < p_pick:
-                    grid[x, y] = 0
-                    agent[2] = True
+            density = local_density(agent['x'], agent['y'], agents)
 
-        dx, dy = np.random.choice([-1, 0, 1]), np.random.choice([-1, 0, 1])
-        agent[0] = (x + dx) % GRID_SIZE
-        agent[1] = (y + dy) % GRID_SIZE
+            if agent.get('ordered_to_leave', False):
+                move_randomly(agent)
+                agent['ordered_to_leave'] = False
+            elif density < CLUSTER_THRESHOLD:
+                # In sparse area: move randomly to seek clusters
+                move_randomly(agent)
+            else:
+                # In cluster: stay put
+                pass
 
-    img.set_data(get_color_grid(grid, agents))
+        # Mark agent's position on grid
+        if agent['is_anti']:
+            grid[agent['x'], agent['y']] = 2  # Anti-agent
+        else:
+            grid[agent['x'], agent['y']] = 1  # Normal agent
+
+    img.set_data(grid)
     return [img]
 
-# Faster Animation
-ani = animation.FuncAnimation(fig, update, frames=300, interval=100, blit=True)
-plt.tight_layout()
-plt.savefig("../output/task2_b.png")
+# Animate
+ani = animation.FuncAnimation(fig, update, frames=TOTAL_STEPS, interval=100, blit=True)
+ani.save("../output/task2_b.mp4", writer='ffmpeg', fps=10)
+print("Animation video saved to output")
 plt.show()

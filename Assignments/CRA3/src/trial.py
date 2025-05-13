@@ -120,5 +120,4 @@ def animate(i):
 
 ani = animation.FuncAnimation(fig, animate, frames=len(frames), interval=100, blit=True)
 ani.save("../output/task2_a.mp4", writer='ffmpeg', fps=10)
-print("Animation video saved to output")
 plt.show()
