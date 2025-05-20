@@ -4,6 +4,8 @@ import matplotlib.animation as animation
 import random
 from tqdm import tqdm
 from matplotlib.colors import ListedColormap
+import matplotlib.patches as patches
+from matplotlib import gridspec
 
 # Constants
 GRID_SIZE = 50
@@ -118,29 +120,75 @@ plt.title("Average Local Density vs Anti-Agent Count")
 plt.xlabel("Number of Anti-Agents")
 plt.ylabel("Average Local Density")
 plt.grid(True)
-plt.savefig("task2_a.png")
+plt.savefig("./output/task_a.png")
 plt.show()
 
 # Save final grid image of best result
 best_index = np.argmax(average_densities)
 best_grid = final_grids[best_index]
+
 plt.figure(figsize=(6, 6))
 plt.imshow(best_grid, cmap=cmap, origin='lower', vmin=0, vmax=5)
 plt.title(f"Final Clustering State (Anti-Agents = {ANTI_AGENT_COUNTS[best_index]})")
 plt.axis('off')
-plt.savefig("task2_a_final.png")
+plt.savefig("./output/task2_a_final.png")
 plt.show()
 
-# Generate and save animation
-frames = run_simulation(num_anti_agents=ANTI_AGENT_COUNTS[best_index], return_animation=True)
-fig, ax = plt.subplots(figsize=(6, 6))
-img = ax.imshow(frames[0], cmap=cmap, origin='lower', vmin=0, vmax=5)
-ax.set_title(f"Clustering Animation (Anti-Agents = {ANTI_AGENT_COUNTS[best_index]})")
-plt.axis('off')
+# Plot final clustering states for all anti-agent counts with boxes
+plt.figure(figsize=(15, 6))
+cols = len(ANTI_AGENT_COUNTS)
+
+for i, (count, grid) in enumerate(zip(ANTI_AGENT_COUNTS, final_grids)):
+    ax = plt.subplot(1, cols, i + 1)
+    ax.imshow(grid, cmap=cmap, origin='lower', vmin=0, vmax=5)
+    ax.set_title(f"Anti-Agents = {count}")
+    ax.axis('off')
+
+    # Add rectangle (box) around each subplot
+    rect = patches.Rectangle(
+        (0, 0), 1, 1, transform=ax.transAxes,
+        linewidth=2, edgecolor='gray', facecolor='none'
+    )
+    ax.add_patch(rect)
+
+plt.suptitle("Final Clustering States for Different Anti-Agent Counts")
+plt.tight_layout()
+plt.subplots_adjust(top=0.85)
+plt.savefig("./output/task2_a_all_final_states_boxed.png")
+plt.show()
+
+
+# Indices for best and worst cases
+best_index = np.argmax(average_densities)
+worst_index = np.argmin(average_densities)
+
+# Get corresponding frames
+frames_best = run_simulation(num_anti_agents=ANTI_AGENT_COUNTS[best_index], return_animation=True)
+frames_worst = run_simulation(num_anti_agents=ANTI_AGENT_COUNTS[worst_index], return_animation=True)
+
+# Determine the number of frames to sync both animations
+num_frames = min(len(frames_best), len(frames_worst))
+
+# Setup figure and subplots
+fig = plt.figure(figsize=(12, 6))
+gs = gridspec.GridSpec(1, 2, width_ratios=[1, 1])
+ax1 = plt.subplot(gs[0])
+ax2 = plt.subplot(gs[1])
+
+img1 = ax1.imshow(frames_best[0], cmap=cmap, origin='lower', vmin=0, vmax=5)
+ax1.set_title(f"Best Clustering (Anti-Agents = {ANTI_AGENT_COUNTS[best_index]})")
+ax1.axis('off')
+
+img2 = ax2.imshow(frames_worst[0], cmap=cmap, origin='lower', vmin=0, vmax=5)
+ax2.set_title(f"Worst Clustering (Anti-Agents = {ANTI_AGENT_COUNTS[worst_index]})")
+ax2.axis('off')
 
 def animate(i):
-    img.set_data(frames[i])
-    return [img]
+    img1.set_data(frames_best[i])
+    img2.set_data(frames_worst[i])
+    return [img1, img2]
 
-ani = animation.FuncAnimation(fig, animate, frames=len(frames), interval=300, blit=True)
+ani = animation.FuncAnimation(fig, animate, frames=num_frames, interval=300, blit=True)
+
+plt.tight_layout()
 plt.show()

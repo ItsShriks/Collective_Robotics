@@ -93,6 +93,6 @@ def update(frame):
 
 # Animate
 ani = animation.FuncAnimation(fig, update, frames=TOTAL_STEPS, interval=100, blit=True)
-ani.save("../output/task2_b.mp4", writer='ffmpeg', fps=10)
+ani.save("./output/task2_b.gif", writer='pillow', fps=10)
 print("Animation video saved to output")
 plt.show()
