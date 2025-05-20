@@ -1,8 +1,3 @@
-Here's your updated `README.md` file, reflecting the new structure you mentioned:
-
----
-
-````markdown
 # Collaborative Robotics Sheet 3 – Ghanekar Nakhye
 
 📌 **Overview**
