@@ -41,7 +41,7 @@ Use the following commands to run each subtask:
 ### Subtask 1: Buffon's Needle (Notebook)
 
 ```bash
-jupyter notebook /Assignments/CRA3/nb/CRA3.ipynb
+jupyter nb/CRA3.ipynb
 ```
 
 The notebook contains the Buffon’s needle simulator and related plots.
@@ -51,28 +51,16 @@ The notebook contains the Buffon’s needle simulator and related plots.
 ### Subtask 2: Anti-Agents in Swarm Aggregation
 
 ```bash
-python3 /Assignments/CRA3/src/task2_a.py    # For Object Clustering with Anti-agents
-python3 /Assignments/CRA3/src/task2_b.py    # For Swarm Aggregation with Messaging Anti-agents
-python3 /Assignments/CRA3/src/task2_c.py    # For Testing Different Anti-agent Percentages
+python3 src/task2_a.py    # For Object Clustering with Anti-agents
+python3 src/task2_b.py    # For Swarm Aggregation with Messaging Anti-agents
+python3 src/task2_c.py    # For Testing Different Anti-agent Percentages
 ```
 
 Each script will generate and save relevant plots and output statistics to:
 
 ```bash
-/Assignments/CRA3/output/
+output/
 ```
-
----
-
-## 📓 Interactive Notebook
-
-You can also explore all simulations and visualizations from one place using:
-
-```bash
-/Assignments/CRA3/nb/CRA3.ipynb
-```
-
-This notebook provides a modular, interactive interface for understanding the Buffon’s Needle simulation and the Anti-agent behavior effects.
 
 ---
 
