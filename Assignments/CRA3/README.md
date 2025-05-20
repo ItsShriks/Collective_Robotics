@@ -29,7 +29,7 @@ You can install the Python packages using pip:
 
 ```bash
 pip3 install matplotlib networkx numpy
-````
+```
 
 Or create a new conda environment using the provided environment.yml file:
 
