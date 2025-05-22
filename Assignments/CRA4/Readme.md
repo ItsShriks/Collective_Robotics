@@ -2,7 +2,7 @@
 
 **Course:** Collective Robotics – Summer Semester 2025  
 **Instructor:** Prof. Dr. Javad Ghofrani  
-**Student:** [Your Name]  
+**Student:** Trushar Ghanekar, Shrikar Nakhye  
 **Submission:** Task Sheet 4 – Dimension Reduction and Rate Equations
 
 ---
@@ -18,15 +18,14 @@ This repository contains solutions to **Task Sheet 4**, focusing on **dimension 
 ```
 
 task-sheet-4/
-├── task\_1\_a.py       # Full simulation of locust behavior
-├── task\_1\_b.py       # Transition histogram construction using 1000 runs
-├── task\_1\_c.py       # Markov-based model simulation using transition probabilities
-├── task\_1\_compare.py # Visualization comparing Task 1a and 1c
-├── task\_2\_a.py       # Delay differential equation solution for avoidance model
-├── task\_2\_b.py       # Extended model with homing state and two scenarios
+├── task 1_a.py       # Full simulation of locust behavior
+├── task 1_b.py       # Transition histogram construction using 1000 runs
+├── task 1_c.py       # Markov-based model simulation using transition probabilities
+├── task 1_compare.py # Visualization comparing Task 1a and 1c
+├── task 2_a.py       # Delay differential equation solution for avoidance model
+├── task 2_b.py       # Extended model with homing state and two scenarios
 ├── plots/            # All output plots in PNG/PDF format
 ├── README.md         # You are here!
-└── requirements.txt  # Python dependencies
 
 ```
 
@@ -93,27 +92,23 @@ task-sheet-4/
 
 ## 📊 Output Plots
 
-All generated plots from the scripts are saved in the `plots/` folder as `.png` and `.pdf` for inclusion in reports.
+All generated plots from the scripts are saved in the `plots/` folder as `.png` for inclusion in reports.
 
 ---
 
 ## ▶️ How to Run
 
-### Setup (Python ≥ 3.8 recommended)
-```bash
-pip install -r requirements.txt
-````
 
 ### Run Tasks
 
 ```bash
-python task_1_a.py         # Task 1a simulation
-python task_1_b.py         # Task 1b histogram
-python task_1_c.py         # Task 1c Markov model
-python task_1_compare.py   # Task 1a vs 1c plots
+python task 1_a.py         # Task 1a simulation
+python task 1_b.py         # Task 1b histogram
+python task 1_c.py         # Task 1c Markov model
+python task 1_compare.py   # Task 1a vs 1c plots
 
-python task_2_a.py         # Task 2a rate equations
-python task_2_b.py         # Task 2b homing model
+python task 2_a.py         # Task 2a rate equations
+python task 2_b.py         # Task 2b homing model
 ```
 
 ---
