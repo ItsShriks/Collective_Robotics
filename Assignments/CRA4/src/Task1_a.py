@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import os
 
 # Parameters
 N = 20
@@ -78,9 +79,16 @@ ani = animation.FuncAnimation(fig, update, frames=timesteps,
                               init_func=init, blit=True, interval=30, repeat=False)
 
 # Show animation
-plt.show()
+#plt.show()
 
 # --- Plot at the end ---
+output_dir = "../output"
+os.makedirs(output_dir, exist_ok=True)
+
+# --- Save Animation ---
+ani.save(os.path.join(output_dir, "task1_a.mp4"), fps=30, dpi=200)
+
+# --- Save Final Plot ---
 plt.figure(figsize=(10, 4))
 plt.plot(left_counts, color='red')
 plt.title('Number of left-going locusts over time')
@@ -88,4 +96,6 @@ plt.xlabel('Time step')
 plt.ylabel('Count of left-going locusts')
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+#plt.show()
+plt.savefig(os.path.join(output_dir, "task1_a_plot.png"))
+plt.close()

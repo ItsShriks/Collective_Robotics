@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm  # For progress bar
+import os
 
 # Parameters
 N = 20
@@ -52,6 +53,9 @@ for run in tqdm(range(runs), desc="Running simulations"):
         left_count = new_left_count
 
 # Plot heatmap
+output_dir = "../output"
+os.makedirs(output_dir, exist_ok=True)
+
 plt.figure(figsize=(8, 6))
 plt.imshow(A, origin='lower', cmap='viridis', interpolation='nearest')
 plt.colorbar(label='Frequency of transitions')
@@ -59,4 +63,5 @@ plt.xlabel('Lt+1 (Next # of left-goers)')
 plt.ylabel('Lt (Current # of left-goers)')
 plt.title('Histogram of Lt → Lt+1 transitions over 1000 runs')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(output_dir, "task1_b.png"))
+#plt.show()

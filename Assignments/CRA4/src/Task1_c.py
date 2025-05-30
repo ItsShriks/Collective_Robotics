@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-
+import os
 # Parameters
 N = 20
 C = 1.0
@@ -66,6 +66,9 @@ for t in range(timesteps):
         break
     L = np.random.choice(np.arange(N + 1), p=probs)
 
+output_dir = "../output"
+os.makedirs(output_dir, exist_ok=True)
+
 # --- Plot L_trajectory (dimension-reduced model) ---
 plt.figure(figsize=(10, 4))
 plt.plot(L_trajectory, label='Simulated L(t) from Markov model', color='blue')
@@ -75,4 +78,5 @@ plt.title('Trajectory of L(t) using dimension-reduced Markov model')
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(output_dir, "task1_c.png"))
+#plt.show()
