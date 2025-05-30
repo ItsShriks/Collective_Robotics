@@ -9,7 +9,7 @@ v_abs = 0.001
 r = 0.045
 P = 0.015
 timesteps = 500
-runs = 1
+runs = 100
 
 # Initialize matrices
 A = np.zeros((N + 1, N + 1), dtype=int)  # transition counts
@@ -50,21 +50,25 @@ for run in tqdm(range(runs), desc="Running simulations"):
         left_count = new_left_count
 
 # Compute transition probabilities P[i][j] = A[i][j] / M[i]
-P = np.zeros_like(A, dtype=float)
+
+transition_matrix = np.zeros_like(A, dtype=float)
+
+# Replace further references:
 for i in range(N + 1):
     if M[i] > 0:
-        P[i, :] = A[i, :] / M[i]
+        transition_matrix[i, :] = A[i, :] / M[i]
 
-# --- Simulate Markov chain using P ---
+# --- Simulate Markov chain using transition_matrix ---
 L_trajectory = []
 L = np.random.randint(0, N + 1)  # initial state
 
 for t in range(timesteps):
     L_trajectory.append(L)
-    probs = P[L]
+    probs = transition_matrix[L]
     if probs.sum() == 0:  # no transition data; stay in place
         break
     L = np.random.choice(np.arange(N + 1), p=probs)
+    
 
 output_dir = "../output"
 os.makedirs(output_dir, exist_ok=True)

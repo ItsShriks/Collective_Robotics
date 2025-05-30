@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-
+import os
 # --- PARAMETERS ---
 N = 20
 C = 1.0
@@ -91,6 +91,10 @@ for t in range(timesteps):
     if probs.sum() == 0:
         break
     L = np.random.choice(np.arange(N + 1), p=probs)
+
+output_dir = "../output"
+os.makedirs(output_dir, exist_ok=True)
+
 fig, axs = plt.subplots(2, 1, figsize=(12, 8), sharex=True)
 
 # Top: Task 1 (Full Simulation)
@@ -106,8 +110,11 @@ axs[1].set_xlabel('Time Step')
 axs[1].set_ylabel('Left-Going Locusts')
 axs[1].grid(True)
 
+# plt.tight_layout()
+# plt.show()
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(output_dir, 'task1_task3_individual_plots.png'))
+plt.close()
 
 # --- COMPARISON PLOT ---
 plt.figure(figsize=(12, 5))
@@ -119,4 +126,5 @@ plt.title('Comparison: Full Simulation vs. Markov Model')
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(output_dir, 'task1_task3_comparison.png'))
+#plt.show()

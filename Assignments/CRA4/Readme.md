@@ -2,7 +2,7 @@
 
 **Course:** Collective Robotics – Summer Semester 2025  
 **Instructor:** Prof. Dr. Javad Ghofrani  
-**Student:** Trushar Ghanekar, Shrikar Nakhye  
+**Students:** Trushar Ghanekar, Shrikar Nakhye  
 **Submission:** Task Sheet 4 – Dimension Reduction and Rate Equations
 
 ---
@@ -17,14 +17,14 @@ This repository contains solutions to **Task Sheet 4**, focusing on **dimension 
 
 ```
 
-task-sheet-4/
+/Assignments/CRA4
 ├── task 1_a.py       # Full simulation of locust behavior
 ├── task 1_b.py       # Transition histogram construction using 1000 runs
 ├── task 1_c.py       # Markov-based model simulation using transition probabilities
 ├── task 1_compare.py # Visualization comparing Task 1a and 1c
 ├── task 2_a.py       # Delay differential equation solution for avoidance model
 ├── task 2_b.py       # Extended model with homing state and two scenarios
-├── plots/            # All output plots in PNG/PDF format
+├── output/            # All output plots in PNG/PDF format
 ├── README.md         # You are here!
 
 ```
