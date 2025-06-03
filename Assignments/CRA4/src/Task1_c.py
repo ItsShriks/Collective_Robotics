@@ -68,7 +68,7 @@ for t in range(timesteps):
     if probs.sum() == 0:  # no transition data; stay in place
         break
     L = np.random.choice(np.arange(N + 1), p=probs)
-    
+
 
 output_dir = "../output"
 os.makedirs(output_dir, exist_ok=True)
@@ -83,4 +83,4 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.savefig(os.path.join(output_dir, "task1_c.png"))
-#plt.show()
+plt.show()
