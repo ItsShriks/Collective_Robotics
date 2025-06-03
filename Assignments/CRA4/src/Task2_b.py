@@ -115,6 +115,6 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 
-plt.savefig(os.path.join(output_dir, 'Task2_b.png'))
-#plt.show()
+#plt.savefig(os.path.join(output_dir, 'Task2_b.png'))
+plt.show()
 
