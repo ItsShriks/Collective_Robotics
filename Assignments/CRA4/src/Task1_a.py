@@ -7,7 +7,7 @@ import os
 N = 20
 C = 1.0
 v_abs = 0.001
-r = 0.045
+r = 0.5
 P = 0.015
 timesteps = 500
 
@@ -86,7 +86,7 @@ output_dir = "../output"
 os.makedirs(output_dir, exist_ok=True)
 
 # --- Save Animation ---
-ani.save(os.path.join(output_dir, "task1_a.mp4"), fps=30, dpi=200)
+#ani.save(os.path.join(output_dir, "task1_a.mp4"), fps=30, dpi=200)
 
 # --- Save Final Plot ---
 plt.figure(figsize=(10, 4))
@@ -96,6 +96,6 @@ plt.xlabel('Time step')
 plt.ylabel('Count of left-going locusts')
 plt.grid(True)
 plt.tight_layout()
-#plt.show()
-plt.savefig(os.path.join(output_dir, "task1_a_plot.png"))
+plt.show()
+#plt.savefig(os.path.join(output_dir, "task1_a_plot.png"))
 plt.close()
