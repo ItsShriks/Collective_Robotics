@@ -14,6 +14,7 @@ This repository contains solutions to **Task Sheet 5**, focusing on **collective
 ---
 
 ## 📁 File Structure
+```
 /Assignments/CRA5
 ├── task1_simulate_dL.py         # Task 1: Empirical measurement of ΔL(L)
 ├── task1_fit_urn_model.py       # Task 1: Curve fitting of Δs(s) and PFB(s)
@@ -27,7 +28,7 @@ This repository contains solutions to **Task Sheet 5**, focusing on **collective
 │   ├── task2_2_plot.png         # Number of switches vs swarm size
 │   └── L_of_L.txt               # Raw data for ΔL(L)
 ├── README.md                    # You are here!
-
+```
 ---
 
 ## ✅ Task 1: Urn Model for Locust Scenario
