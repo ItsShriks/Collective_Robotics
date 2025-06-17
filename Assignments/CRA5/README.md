@@ -21,10 +21,10 @@ This repository contains solutions to **Task Sheet 5**, focusing on **collective
 ├── task3_forage_controller.py   # Task 3: Robot foraging behavior (spec template)
 ├── output/                      # Contains all output plots and ΔL(L) data file
 │   ├── task1_1_plot.png         # ΔL(L) vs L plot
-│   ├── task1_2_plot.png          # Fitted urn model Δs(s) vs s
-│   ├── task1_3_plot.png          # PFB(s) vs s plot
-│   ├── task2_1_plot.png  # Switch time vs swarm size
-│   ├── task2_2_plot.png # Number of switches vs swarm size
+│   ├── task1_2_plot.png         # Fitted urn model Δs(s) vs s
+│   ├── task1_3_plot.png         # PFB(s) vs s plot
+│   ├── task2_1_plot.png         # Switch time vs swarm size
+│   ├── task2_2_plot.png         # Number of switches vs swarm size
 │   └── L_of_L.txt               # Raw data for ΔL(L)
 ├── README.md                    # You are here!
 
