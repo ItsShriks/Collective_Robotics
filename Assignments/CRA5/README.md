@@ -16,18 +16,21 @@ This repository contains solutions to **Task Sheet 5**, focusing on **collective
 ## 📁 File Structure
 ```
 /Assignments/CRA5
-├── task1_simulate_dL.py         # Task 1: Empirical measurement of ΔL(L)
-├── task1_fit_urn_model.py       # Task 1: Curve fitting of Δs(s) and PFB(s)
-├── task2_global_switching.py    # Task 2: Global switching simulation vs swarm size
-├── task3_forage_controller.py   # Task 3: Robot foraging behavior (spec template)
+├── src/
+|      ├── task1_1.py         # Task 1: Empirical measurement of ΔL(L)
+|      ├── task1_2.py       # Task 1: Urn Model of Δs(s) and s
+|      ├── task1_3.py       # Task 1: Curve fitting of PFB(s) and s
+|      ├── task2.py    # Task 2: Global switching simulation vs swarm size
+|      ├── task3_forage_controller.py   # Task 3: Robot foraging behavior (spec template)
 ├── output/                      # Contains all output plots and ΔL(L) data file
-│   ├── task1_1_plot.png         # ΔL(L) vs L plot
-│   ├── task1_2_plot.png         # Fitted urn model Δs(s) vs s
-│   ├── task1_3_plot.png         # PFB(s) vs s plot
-│   ├── task2_1_plot.png         # Switch time vs swarm size
-│   ├── task2_2_plot.png         # Number of switches vs swarm size
-│   └── L_of_L.txt               # Raw data for ΔL(L)
-├── README.md                    # You are here!
+|      │   ├── task1_1_plot.png         # ΔL(L) vs L plot
+|      │   ├── task1_2_plot.png         # Fitted urn model Δs(s) vs s
+|      │   ├── task1_3_plot.png         # PFB(s) vs s plot
+|      │   ├── task2_1_plot.png         # Switch time vs swarm size
+|      │   ├── task2_2_plot.png         # Number of switches vs swarm size
+|      │   └── L_of_L.txt               # Raw data for ΔL(L)
+|      |    ├── task3
+|      ├── README.md                    # You are here!
 ```
 ---
 
@@ -86,23 +89,27 @@ This repository contains solutions to **Task Sheet 5**, focusing on **collective
   - Proximity + bumper + light sensor input
   - Motor commands and boolean outputs for behavior flags
 - Future versions to measure performance over different swarm sizes \( N \in \{1, \dots, 10\} \).
+#### 🛠️ Dual Implementation
 
+1. PyBullet (3D Simulation)
+	•	Physics-based realistic simulation.
+	•	Robot components modeled with joints, sensors, and actuators.
+	•	Ideal for fine-grained control and realistic noise modeling.
+	---
+2. PyGame (2D Simulation)
+	•	Simple and fast simulation.
+	•	Lightweight and easy to implement.
+	•	Ideal for quick prototyping and testing.
+	---
 ---
-
-## 📊 Output Plots
-
-All plots and simulations are saved in the `/output/` folder in `.png` and `.mp4` format for inclusion in documentation or reports.
-
----
-
-## ▶️ How to Run
-
-```bash
-# Task 1: Empirical ΔL and model fitting
-python task1_simulate_dL.py
-python task1_fit_urn_model.py
-
+# Task1: Urn Model for Locusts
+```
+python task1_1.py
+python task1_2.py
+python task1_3.py
+```
 # Task 2: Global switching vs swarm size
+```
 python task2_global_switching.py
 ```
 # Task 3: Foraging controller (in development)
