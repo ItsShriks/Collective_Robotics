@@ -1,44 +1,63 @@
+# main.py
+
 import pybullet as p
 import pybullet_data
-import time
 import numpy as np
 import matplotlib.pyplot as plt
-from robot_controller import Robot
-from utils import spawn_objects, spawn_home_zone
+from robot import Robot
+import time
 
-def run_simulation(num_robots, sim_time=30):
-    p.connect(p.DIRECT)  # Use GUI for debugging
+def run_simulation(n_robots=5, max_steps=3000, gui=False):
+    if gui:
+        p.connect(p.GUI)
+    else:
+        p.connect(p.DIRECT)
+
     p.setAdditionalSearchPath(pybullet_data.getDataPath())
-    p.setGravity(0, 0, -9.8)
     p.loadURDF("plane.urdf")
+    p.setGravity(0, 0, -9.8)
 
-    home_zone = spawn_home_zone()
-    robots = [Robot(start_pos=(i * 0.5, 0, 0.1), robot_id=i) for i in range(num_robots)]
-    objects = spawn_objects(num_objects=20)
+    # Simulated home zone light source
+    home_zone_pos = [0, 0, 1.5]
 
-    collected = 0
-    start_time = time.time()
+    # Spawn robots
+    robots = []
+    for i in range(n_robots):
+        start_pos = [np.random.uniform(-4, 4), np.random.uniform(-4, 4), 0.1]
+        robot_id = i  # placeholder ID
+        robots.append(Robot(start_pos=start_pos, robot_id=robot_id))
 
-    while time.time() - start_time < sim_time:
+    delivered_objects = 0
+
+    for t in range(max_steps):
         for robot in robots:
-            collected += robot.step(objects, home_zone)
+            delivered = robot.step(objects=[], home_zone=home_zone_pos)
+            delivered_objects += delivered
+
         p.stepSimulation()
-        time.sleep(1/240.0)
+        if gui:
+            time.sleep(1. / 240.)
 
     p.disconnect()
-    return collected
+    return delivered_objects
 
-# Run for different swarm sizes
-results = []
-for N in range(1, 11):
-    performance = run_simulation(num_robots=N)
-    results.append(performance)
-    print(f"N={N}, Collected: {performance}")
 
-# Plotting
-plt.plot(range(1, 11), results, marker='o')
-plt.title("Swarm Performance over Swarm Size")
-plt.xlabel("Number of Robots")
-plt.ylabel("Collected Objects")
-plt.grid(True)
-plt.show()
+if __name__ == "__main__":
+    swarm_sizes = [1, 3, 5, 7, 10]
+    performances = []
+
+    for size in swarm_sizes:
+        print(f"Running simulation for swarm size = {size}")
+        delivered = run_simulation(n_robots=size, gui=False)
+        performances.append(delivered)
+
+    # Plot results
+    plt.figure(figsize=(8, 5))
+    plt.plot(swarm_sizes, performances, marker='o', linestyle='-', color='blue')
+    plt.xlabel("Swarm Size")
+    plt.ylabel("Objects Delivered")
+    plt.title("Swarm Foraging Performance vs Swarm Size")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig("swarm_performance.png")
+    plt.show()

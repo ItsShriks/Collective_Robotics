@@ -1,10 +1,12 @@
+# robot.py
+
 import pybullet as p
 import numpy as np
 
 class Robot:
     def __init__(self, start_pos, robot_id):
         self.id = robot_id
-        self.robot = p.loadURDF("assets/robot.urdf", basePosition=start_pos)
+        self.robot = p.loadURDF("assets/robot.urdf", basePosition=start_pos)  # Or your own URDF
         self.carrying_object = False
 
     def read_sensors(self):
@@ -19,11 +21,10 @@ class Robot:
     def decide(self, sensors):
         light_left, light_right, bumper_force, proximity = sensors
 
-        transporting_object = bumper_force > 5  # Simulate pushing
+        transporting_object = bumper_force > 5
         collision = max(proximity) > 0.8
         home_zone = (light_left + light_right) > 1.5
 
-        # Simple behavior: go forward or turn
         if collision:
             left, right = -1.0, 1.0
         elif home_zone and transporting_object:
@@ -44,7 +45,6 @@ class Robot:
                                     p.VELOCITY_CONTROL,
                                     targetVelocities=[left, right])
 
-        # If object is delivered
         if not self.carrying_object and transporting_object:
             self.carrying_object = True
         elif self.carrying_object and home_zone_flag:
