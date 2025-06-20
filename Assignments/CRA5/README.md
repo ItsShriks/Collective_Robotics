@@ -1,8 +1,8 @@
 # Collective Robotics – Task Sheet 5
 
-**Course:** Collective Robotics – Summer Semester 2025  
-**Instructor:** Prof. Dr. Javad Ghofrani  
-**Students:** Trushar Ghanekar, Shrikar Nakhye  
+**Course:** Collective Robotics – Summer Semester 2025
+**Instructor:** Prof. Dr. Javad Ghofrani
+**Students:** Trushar Ghanekar, Shrikar Nakhye
 **Submission:** Task Sheet 5 – Collective Decision-Making
 
 ---
@@ -48,7 +48,7 @@ This repository contains solutions to **Task Sheet 5**, focusing on **collective
 - Computes:
   - Fraction of left-goers \( s = L/N \)
   - Δs(s) from ΔL/N
-  - Fits:  
+  - Fits:
     \[
     \Delta s(s) = 4c \cdot (\phi \sin(\pi s) - 0.5)(s - 0.5)
     \]
@@ -79,19 +79,19 @@ This repository contains solutions to **Task Sheet 5**, focusing on **collective
 
 ## ⚠️ Task 3: Foraging Behavior (Prototype)
 
-<!-- ### 🔹 task3_forage_controller.py
+### 🔹 task3_forage_controller.py
 
 - Initial template controller for a swarm robot foraging task.
 - Design includes:
   - Proximity + bumper + light sensor input
   - Motor commands and boolean outputs for behavior flags
 - Future versions to measure performance over different swarm sizes \( N \in \{1, \dots, 10\} \).
- -->
+
 ---
 
 ## 📊 Output Plots
 
-All plots are saved in the `/output/` folder in `.png` format for inclusion in documentation or reports.
+All plots and simulations are saved in the `/output/` folder in `.png` and `.mp4` format for inclusion in documentation or reports.
 
 ---
 
@@ -107,3 +107,13 @@ python task2_global_switching.py
 ```
 # Task 3: Foraging controller (in development)
 <!-- python task3_forage_controller.py -->
+```bash
+cd Assignments/CRA5/src/task_3/src
+```
+For Simulation
+```bash
+python main.py
+
+For Plot
+```bash
+python swarm_performance.py

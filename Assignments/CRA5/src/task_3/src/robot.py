@@ -4,11 +4,12 @@ import time
 import numpy as np
 
 class Robot:
-    def __init__(self, urdf_path, start_pos, start_orientation):
+    def __init__(self, urdf_path, start_pos, start_orientation, name="robot"):
         self.robot_id = p.loadURDF(urdf_path, start_pos, start_orientation)
+        self.name = name
         self.holding = None
         self.constraint_id = None
-        #self.name = name
+
 
     def get_position(self):
         return p.getBasePositionAndOrientation(self.robot_id)[0]
