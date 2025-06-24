@@ -76,7 +76,6 @@ def main():
     plt.title("Swarm Performance vs Swarm Size")
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
     plt.savefig("task3_plot.png", dpi=300)  # PNG with high resolution
     print("Plot saved as 'task3_plot.png'")
     plt.show()
